@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\ResetController;
+use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
@@ -8,7 +9,8 @@ use App\Http\Controllers\Type_BooksController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TierController;
 use App\Http\Controllers\FileUploadController;
-
+use App\Http\Controllers\FileDownloadController;
+use App\Http\Controllers\DownloadFileController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,6 +25,18 @@ use App\Http\Controllers\FileUploadController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('/file',[FileUploadController::class,'file']);
+
+Route::get('/file',[FileUploadController::class,'index']);
+
+Route::get('/file/{id}',[FileUploadController::class,'show']);
+
+Route::put('/file/{id}',[FileUploadController::class,'update']);
+
+Route::delete('/file/{id}',[FileUploadController::class,'destroy']);
+
 
 Route::get('/books',[BookController::class,'index']);
 
@@ -71,19 +85,11 @@ Route::delete('/users/{id}',[UserController::class,'destroy']);
 
 Route::post('register', [UserController::class,'register']);
 Route::post('login', [UserController::class,'login']);
+Route::post('/reset',[ResetController::class,'reset']);
+Route::post('/resetPassword',[ChangePasswordController::class,'process']);
+Route::get('/user-profile', [UserController::class, 'userProfile']); 
+Route::put('/user-profile/{id}',[UserController::class,'update']);
 
-
-/*Route::post('/login', [UserController::class, 'login']);
-Route::group([
-    'middleware' => 'api',
-    'prefix' => 'auth'
-
-], function ($router) {
-    Route::post('/register', [UserController::class, 'register']);
-    Route::post('/logout', [UserController::class, 'logout']);
-    Route::post('/refresh', [UserController::class, 'refresh']);
-    Route::get('/user-profile', [UserController::class, 'userProfile']);    
-});*/
 
 
 Route::get('/tiers',[TierController::class,'index']);
@@ -95,18 +101,6 @@ Route::get('/tiers/{id}',[TierController::class,'show']);
 Route::put('/tiers/{id}',[TierController::class,'update']);
 
 Route::delete('/tiers/{id}',[TierController::class,'destroy']);
-
-
-
-Route::get('/file-upload',[FileUploadController::class,'index']);
-
-Route::post('/file-upload',[FileUploadController::class,'FileUpload']);
-
-Route::get('/file-upload/{id}',[FileUploadController::class,'show']);
-
-Route::put('/file-upload/{id}',[FileUploadController::class,'update']);
-
-Route::delete('/file-upload/{id}',[FileUploadController::class,'destroy']);
 
 
 Route::get('/book_ocr',[Book_ocrResource::class,'index']);

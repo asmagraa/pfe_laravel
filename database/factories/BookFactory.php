@@ -28,10 +28,8 @@ class BookFactory extends Factory
             'description'  =>$this->faker->text(100),
             'langue'  =>$this->faker->text(20),
             'edition'  =>$this->faker->text(20),
-            'file_id' =>$this->faker->integer(20),
             'user_update'  =>$this->faker->text(20),
             'id_type' =>$this->faker->integer(20),
-            'file_id' =>$this->faker->integer(20)
         ];
     }
 }

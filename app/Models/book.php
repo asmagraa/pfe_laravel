@@ -10,7 +10,7 @@ class book extends Model
     use HasFactory;
 
     protected $table = "book";
-    protected $fillable = ['type_book','name_book','author','description','langue','edition','file_id','user_update','id_type','file_id'];
+    protected $fillable = ['type_book','name_book','author','description','langue','edition','user_update','id_type','thumbnail','thumbnail_path'];
 
 
     public function chapitre()
@@ -32,7 +32,9 @@ class book extends Model
     {
        return $this->hasOne(book_ocr::class); 
     }
-
+    function addBook($data){
+       DB::table('book')->insert($data);
+          }
 
 }
 

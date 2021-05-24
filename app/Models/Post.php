@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class Post extends Model
 {
     use HasFactory;
-    protected $table="files";
-    protected $primaryKey="id";
-    protected $fillable = ['file_name','path','user_update'];
-
+    protected $fillable = ['thumbnail','thumbnail_path'];
 
 }

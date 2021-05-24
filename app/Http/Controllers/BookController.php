@@ -43,15 +43,16 @@ class BookController extends Controller
         $book->description = $request->description;
         $book->langue = $request->langue;
         $book->edition = $request->edition;
+        $book->thumbnail = $request->thumbnail;
+        
         $book->user_update = $request->user_update;
         $book->id_type = $request->id_type;
-        $book->file_id = $request->file_id;
         if($book->save())
         {
             return new BookResource($book);
         }
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -91,9 +92,10 @@ class BookController extends Controller
         $book->description = $request->description;
         $book->langue = $request->langue;
         $book->edition = $request->edition;
+        $book->thumbnail = $request->thumbnail;
+        
         $book->user_update = $request->user_update;
         $book->id_type = $request->id_type;
-        $book->file_id = $request->file_id;
         if($book->save())
         {
             return new BookResource($book);

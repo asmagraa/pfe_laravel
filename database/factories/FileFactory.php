@@ -24,6 +24,7 @@ class FileFactory extends Factory
         return [
             'file_name'  =>$this->faker->text(20),
             'path'  =>$this->faker->text(20),
+            'image'  =>$this->faker->text(20),
             'user_update'  =>$this->faker->text(20)
         ];
     }

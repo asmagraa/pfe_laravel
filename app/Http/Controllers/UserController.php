@@ -176,7 +176,10 @@ class UserController extends Controller
 
     }
 
-
+    public function userProfile() {
+        return response()->json(auth()->user());
+    }
+  
     
 
 }
